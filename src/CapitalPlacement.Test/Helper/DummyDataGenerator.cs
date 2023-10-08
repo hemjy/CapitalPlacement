@@ -16,7 +16,7 @@ namespace CapitalPlacement.Test.Helper
             var programDetailFaker = new Faker<ProgramDetailDTO>()
            .RuleFor(p => p.Title, f => f.Lorem.Word())
            .RuleFor(p => p.Description, f => f.Lorem.Paragraph())
-           .RuleFor(p => p.ProgramType, f => f.PickRandom<ProgramType>())
+           .RuleFor(p => p.ProgramType, f => f.PickRandom<ProgramType>().ToString())
            .RuleFor(p => p.ApplicationClose, f => f.Date.Future())
            .RuleFor(p => p.ApplicationOpen, f => f.Date.Future())
            .RuleFor(p => p.Location, f => f.Address.ToString())
@@ -31,7 +31,7 @@ namespace CapitalPlacement.Test.Helper
             var programDetailFaker = new Faker<ProgramDetailDTO>()
            .RuleFor(p => p.Title, f => f.Lorem.Word())
            .RuleFor(p => p.Description, f => f.Lorem.Paragraph())
-           .RuleFor(p => p.ProgramType, f => f.PickRandom<ProgramType>())
+           .RuleFor(p => p.ProgramType, f => f.PickRandom<ProgramType>().ToString())
            .RuleFor(p => p.ApplicationClose, f => f.PickRandom<DateTime>())
            .RuleFor(p => p.Location, f => f.Address.ToString())
 

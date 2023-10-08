@@ -39,14 +39,14 @@ namespace CapitalPlacement.Domain.Entities
     public class Question
     {
         public string Text { get; set; }
-        public QuestionType QuestionType { get; set; }
+        public string QuestionType { get; set; }
     }
 
     public class Education
     {
         public string SchoolName { get; set; }
         public string CourseName { get; set; }
-        public DegreeType DegreeType { get; set; }
+        public string DegreeType { get; set; }
         public string StudyLocation { get; set; }
         public DateTime startDate { get; set; }
         public DateTime enddate { get; set; }
@@ -71,7 +71,7 @@ namespace CapitalPlacement.Domain.Entities
     public class Stage
     {
         public string Name { get; set; }
-        public StageType Type { get; set; }
+        public string StageType { get; set; }
         public string Text { get; set; }
         public List<VideoInterviewQuestion> VideoInterviewQuestions { get; set; }
     }
@@ -91,14 +91,14 @@ namespace CapitalPlacement.Domain.Entities
         public string Benefits { get; set; }
         public List<string> Skills { get; set; }
         public string ApplicationCriteria { get; set; }
-        public ProgramType ProgramType { get; set; }
+        public string ProgramType { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime ApplicationOpen { get; set; }
         public DateTime ApplicationClose { get; set; }
         public string Duration { get; set; }
         public string Location { get; set; }
         public bool IsRemote { get; set; }
-        public QualificationType minQualification { get; set; }
+        public string minQualification { get; set; }
         public int MaxNoOfApplication { get; set; }
 
 

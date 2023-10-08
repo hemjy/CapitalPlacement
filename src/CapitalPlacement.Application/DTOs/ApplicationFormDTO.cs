@@ -9,7 +9,7 @@ namespace CapitalPlacement.Application.DTOs
     {
 
         public string CoverImageUrl { get; set; }
-        public string firstName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string phonenumber { get; set; }
@@ -24,20 +24,20 @@ namespace CapitalPlacement.Application.DTOs
         public string ResumeUrl { get; set; }
         public string EssaySelf { get; set; }
         public int graduationYear { get; set; }
-        public List<Question> ProfileQuestions { get; set; }
+        public List<QuestionDTO> ProfileQuestions { get; set; }
     }
 
     public class QuestionDTO
     {
         public string Text { get; set; }
-        public QuestionType QuestionType { get; set; }
+        public string QuestionType { get; set; }
     }
 
     public class EducationDTO
     {
         public string SchoolName { get; set; }
         public string CourseName { get; set; }
-        public DegreeType DegreeType { get; set; }
+        public string DegreeType { get; set; }
         public string StudyLocation { get; set; }
         public DateTime startDate { get; set; }
         public DateTime enddate { get; set; }
