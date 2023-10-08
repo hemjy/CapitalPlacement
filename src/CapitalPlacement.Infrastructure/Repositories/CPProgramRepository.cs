@@ -31,6 +31,30 @@ namespace CapitalPlacement.Infrastructure.Repositories
             }
         }
 
+        public async Task<CPProgram> FirstOrDefaultAsync()
+        {
+            try
+            {
+                var query = new QueryDefinition("SELECT * FROM c");
+
+                var queryIterator = _container.GetItemQueryIterator<CPProgram>(query);
+
+                while (queryIterator.HasMoreResults)
+                {
+                    var results = await queryIterator.ReadNextAsync();
+                    if (results.Count > 0)
+                    {
+                       return results.First();
+                    }
+                }
+                return null;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                throw new ArgumentException("Item not Exit");
+            }
+        }
+
         public async Task<CPProgram> CreateAsync(CPProgram CPProgram)
         {
             var query = new QueryDefinition("SELECT * FROM c WHERE c.Title = @title")

@@ -7,5 +7,6 @@ namespace CapitalPlacement.Domain.Infrastructure.Respository
         Task<CPProgram> GetByIdAsync(Guid id);
         Task<CPProgram> CreateAsync(CPProgram item);
         Task UpdateAsync(CPProgram item);
+        Task<CPProgram> FirstOrDefaultAsync();
     }
 }

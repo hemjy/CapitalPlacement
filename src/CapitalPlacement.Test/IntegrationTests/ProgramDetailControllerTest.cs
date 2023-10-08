@@ -19,15 +19,28 @@ namespace CapitalPlacement.Test.IntegrationTests
 
             var validModel = DummyDataGenerator.ProgramDetailDTOValidData();
 
-            var programId = new Guid("bb5b51f3-ebc7-4350-a0d3-5ec7bcc2d2ab");
-            var ob = JsonConvert.SerializeObject(validModel);
-            var jsonContent = new StringContent(ob, Encoding.UTF8, "application/json"); ;
+            var jsonContent = new StringContent(JsonConvert.SerializeObject(validModel), Encoding.UTF8, "application/json"); ;
 
-            var response = await _client.PutAsync($"/api/Program/{programId}", jsonContent);
+            var response = await _client.PutAsync($"/api/Program/{_programId}", jsonContent);
 
             // Assert: Check the response
             response.EnsureSuccessStatusCode(); 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+        }
+
+        [Fact]
+        public async Task Update_ReturnsBadRequestResult_WhenInValidDataIsProvided()
+        {
+
+            var validModel = DummyDataGenerator.ProgramDetailDTOInvalidData();
+            var ob = JsonConvert.SerializeObject(validModel);
+            var jsonContent = new StringContent(ob, Encoding.UTF8, "application/json"); ;
+
+            var response = await _client.PutAsync($"/api/Program/{_programId}", jsonContent);
+
+            // Assert: Check the response
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
 
         }
     }
