@@ -137,7 +137,7 @@ namespace CapitalPlacement.Test.Helper
         {
             var fake = new Faker<QuestionDTO>()
                 .RuleFor(q => q.Text, f => f.Lorem.Sentence())
-                .RuleFor(q => q.QuestionType, f => f.PickRandom("MultipleChoices", "Paragraph"));
+                .RuleFor(q => q.QuestionType, f => f.PickRandom<QuestionType>().ToString());
 
             return fake.Generate(count);
         }
@@ -156,7 +156,7 @@ namespace CapitalPlacement.Test.Helper
             var fake = new Faker<EducationDTO>()
                 .RuleFor(e => e.SchoolName, f => f.Company.CompanyName())
                 .RuleFor(e => e.CourseName, f => f.Random.Words(3))
-                .RuleFor(e => e.DegreeType, f => f.PickRandom("Bachelor", "Master"))
+                .RuleFor(e => e.DegreeType, f => f.PickRandom<DegreeType>().ToString())
                 .RuleFor(e => e.StudyLocation, f => f.Address.City())
                 .RuleFor(e => e.StartDate, f => f.Date.Past())
                 .RuleFor(e => e.EndDate, f => f.Date.Past())

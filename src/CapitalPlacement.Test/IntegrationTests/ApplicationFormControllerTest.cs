@@ -16,7 +16,22 @@ namespace CapitalPlacement.Test.IntegrationTests
     public class ApplicationFormControllerTest : CPBaseTest<ApplicationFormController>
     {
         
-       
+        [Fact]
+        public async Task Update_ReturnsOkResult_WhenValidDataIsProvided()
+        {
+
+            var validModel = DummyDataGenerator.GenerateFakeApplicationForm();
+
+            var jsonContent = new StringContent(JsonConvert.SerializeObject(validModel), Encoding.UTF8, "application/json"); ;
+
+            var response = await _client.PutAsync($"/api/ApplicationForm/{_programId}", jsonContent);
+
+            // Assert: Check the response
+            response.EnsureSuccessStatusCode();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+        }
+
         [Fact]
         public async Task Update_ReturnsBadRequestResult_WhenInValidDataIsProvided()
         {
