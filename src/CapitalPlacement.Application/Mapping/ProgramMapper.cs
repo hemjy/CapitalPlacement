@@ -15,6 +15,7 @@ namespace CapitalPlacement.Application.Mapping
         public ProgramMapper()
         {
             CreateMap<CPProgram, ProgramDTO>();
+            CreateMap<ProgramDTO, CPProgram>();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CapitalPlacement.Application.DTOs
     public class StageDTO
     {
         public string Name { get; set; }
-        public StageType Type { get; set; }
+        public string Type { get; set; }
         public string Text { get; set; }
         public List<VideoInterviewQuestionDTO> VideoInterviewQuestions { get; set; }
     }

@@ -38,12 +38,10 @@ namespace CapitalPlacement.Middlewares
                         break;
                     case ArgumentException e:
                         response.StatusCode = (int)HttpStatusCode.BadRequest;
-                        responseModel.Message = "You are not authorized to access this resource";
                         break;
                     case UnauthorizedAccessException e:
                         // not found error
                         response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        responseModel.Message = "You are not authorized to access this resource";
                         break;
                     default:
                         // unhandled error

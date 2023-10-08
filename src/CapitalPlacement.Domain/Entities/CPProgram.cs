@@ -15,26 +15,24 @@ namespace CapitalPlacement.Domain.Entities
 
     public class ApplicationForm
     {
-
         public string CoverImageUrl { get; set; }
-        public string firstName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string phonenumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string Nationality { get; set; }
         public string CurrentResidence { get; set; }
-        public string IDnumber { get; set; }
-        public DateTime DateofBirth { get; set; }
+        public string IDNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
-        public List<Question> personalInfoQuestions { get; set; }
+        public List<Question> PersonalInfoQuestions { get; set; }
         public List<Education> Educations { get; set; }
         public List<WorkExperience> WorkExperiences { get; set; }
         public string ResumeUrl { get; set; }
         public string EssaySelf { get; set; }
-        public int graduationYear { get; set; }
+        public int GraduationYear { get; set; }
         public List<Question> ProfileQuestions { get; set; }
     }
-
 
     public class Question
     {
@@ -48,8 +46,8 @@ namespace CapitalPlacement.Domain.Entities
         public string CourseName { get; set; }
         public string DegreeType { get; set; }
         public string StudyLocation { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime enddate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public bool IsCurrentlyStudy { get; set; }
     }
 
@@ -58,12 +56,12 @@ namespace CapitalPlacement.Domain.Entities
         public string CompanyName { get; set; }
         public string Position { get; set; }
         public string WorkLocation { get; set; }
-        public DateTime startDate { get; set; }
-        public DateTime enddate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public bool IsCurrentlyWorking { get; set; }
     }
 
-    public class Workflow
+public class Workflow
     {
         public List<Stage> Stages { get; set; }
     }

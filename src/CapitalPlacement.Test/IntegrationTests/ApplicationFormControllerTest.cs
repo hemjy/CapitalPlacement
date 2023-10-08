@@ -13,39 +13,18 @@ using Xunit;
 
 namespace CapitalPlacement.Test.IntegrationTests
 {
-    public class ProgramDetailControllerTest : CPBaseTest<ProgramDetailController>
+    public class ApplicationFormControllerTest : CPBaseTest<ApplicationFormController>
     {
-        [Fact]
-        public async Task Create_Should_Return_CreatedResult()
-        {
-            // Arrange
-
-            // Create a sample ProgramDetailDTO
-            var programDetail = DummyDataGenerator.ProgramDetailDTOValidData();
-
-            var employerId = Guid.NewGuid();
-
-            // Act
-            var response = await _client.PostAsJsonAsync($"/api/program/{employerId}", programDetail);
-
-            // Assert
-            response.EnsureSuccessStatusCode();
-            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
-            var data = await response.Content.ReadFromJsonAsync<ProgramId>();
-
-            Assert.True(data != null);
-            Assert.True(data.id != null);
-            Assert.True(data.id != Guid.Empty);
-        }
+        
         [Fact]
         public async Task Update_ReturnsOkResult_WhenValidDataIsProvided()
         {
 
-            var validModel = DummyDataGenerator.ProgramDetailDTOValidData();
+            var validModel = DummyDataGenerator.GenerateFakeApplicationForm();
 
             var jsonContent = new StringContent(JsonConvert.SerializeObject(validModel), Encoding.UTF8, "application/json"); ;
 
-            var response = await _client.PutAsync($"/api/Program/{_programId}", jsonContent);
+            var response = await _client.PutAsync($"/api/ApplicationForm/{_programId}", jsonContent);
 
             // Assert: Check the response
             response.EnsureSuccessStatusCode();
@@ -57,11 +36,11 @@ namespace CapitalPlacement.Test.IntegrationTests
         public async Task Update_ReturnsBadRequestResult_WhenInValidDataIsProvided()
         {
 
-            var validModel = DummyDataGenerator.ProgramDetailDTOInvalidData();
+            var validModel = DummyDataGenerator.GenerateInvalidFakeApplicationForm();
             var ob = JsonConvert.SerializeObject(validModel);
             var jsonContent = new StringContent(ob, Encoding.UTF8, "application/json"); ;
 
-            var response = await _client.PutAsync($"/api/Program/{_programId}", jsonContent);
+            var response = await _client.PutAsync($"/api/ApplicationForm/{_programId}", jsonContent);
 
             // Assert: Check the response
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
@@ -72,7 +51,7 @@ namespace CapitalPlacement.Test.IntegrationTests
         public async Task Get_Should_Return_OkResult()
         {
             // Act
-            var response = await _client.GetAsync($"/api/program/{_programId}");
+            var response = await _client.GetAsync($"/api/ApplicationForm/{_programId}");
 
             // Assert
             response.EnsureSuccessStatusCode();
@@ -84,17 +63,13 @@ namespace CapitalPlacement.Test.IntegrationTests
         {
             var programId = Guid.NewGuid();
             // Act
-            var response = await _client.GetAsync($"/api/program/{programId}");
+            var response = await _client.GetAsync($"/api/ApplicationForm/{programId}");
 
             // Assert
-            Assert.True(response.StatusCode == HttpStatusCode.BadRequest);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
 
-        public class ProgramId
-        {
-            public Guid id { get; set; }
-        }
 
     }
 }

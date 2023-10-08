@@ -16,14 +16,14 @@ namespace CapitalPlacement.Application.Validators
             When(x => x.ProfileQuestions != null && x.ProfileQuestions.Any(), () =>
             {
                 RuleFor(x => x.ProfileQuestions)
-                     .Must(IsValidEnumList<QuestionType, QuestionDTO>)
+                     .Must(IsValidQuestionTypeList)
                      .WithMessage("Invalid  Question Type");
             });
 
             When(x => x.Educations != null && x.Educations.Any(), () =>
             {
                 RuleFor(x => x.Educations)
-                     .Must(IsValidEnumList<DegreeType, EducationDTO>)
+                     .Must(IsValidDegreeTypeList)
                      .WithMessage("Invalid Degree Type");
             });
         }
@@ -36,16 +36,29 @@ namespace CapitalPlacement.Application.Validators
             }
             return false;
         }
-        private bool IsValidEnumList<TEnum, TItem>(List<TItem> items) where TEnum : struct, Enum
+        private bool IsValidQuestionTypeList(List<QuestionDTO> items)
         {
             foreach (var item in items)
             {
-                if (!Enum.TryParse(item.ToString(), out TEnum _))
+                if (!Enum.TryParse(item.QuestionType.ToString(), true, out QuestionType _))
                 {
                     return false;
                 }
             }
             return true;
         }
+
+        private bool IsValidDegreeTypeList(List<EducationDTO> items)
+        {
+            foreach (var item in items)
+            {
+                if (!Enum.TryParse(item.DegreeType.ToString(),true , out DegreeType _))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

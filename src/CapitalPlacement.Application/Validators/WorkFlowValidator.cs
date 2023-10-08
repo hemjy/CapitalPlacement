@@ -5,29 +5,26 @@ using FluentValidation;
 
 namespace CapitalPlacement.Application.Validators
 {
-    public class WorkflowValidator : AbstractValidator<WorkflowDTO>
+    
+    public class StageValidator : AbstractValidator<StageDTO>
     {
-        public WorkflowValidator()
+        public StageValidator()
         {
-            When(x => x.Stages != null && x.Stages.Any(), () =>
+            When(x => !string.IsNullOrEmpty(x.Type), () =>
             {
-                RuleFor(x => x.Stages)
-                     .Must(IsValidEnumList<StageType, StageDTO>)
-                     .WithMessage("Invalid  Stage Type");
+                RuleFor(x => x.Type)
+                    .Must(IsValidEnumValue<StageType>)
+                    .WithMessage("Invalid Stage Type");
             });
 
         }
-
-        private bool IsValidEnumList<TEnum, TItem>(List<TItem> items) where TEnum : struct, Enum
+        private bool IsValidEnumValue<T>(string value) where T : struct, Enum
         {
-            foreach (var item in items)
+            if (Enum.TryParse<T>(value, true, out _))
             {
-                if (!Enum.TryParse(item.ToString(), out TEnum _))
-                {
-                    return false;
-                }
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

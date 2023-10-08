@@ -9,6 +9,6 @@ namespace CapitalPlacement.Domain.Enums
     public enum QuestionType
     {
         None = 0,
-        MultpleChoices, Paragraph, Upload, NUmber
+        MultpleChoices, Paragraph, Upload, Number
     }
 }
