@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CapitalPlacement.Application\CapitalPlacement.Application.csproj" />
     <ProjectReference Include="..\CapitalPlacement.Infrastructure\CapitalPlacement.Infrastructure.csproj" />
   </ItemGroup>
