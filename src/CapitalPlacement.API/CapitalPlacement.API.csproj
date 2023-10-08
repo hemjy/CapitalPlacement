@@ -15,4 +15,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CapitalPlacement.Application\CapitalPlacement.Application.csproj" />
+  </ItemGroup>
+
 </Project>
