@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapitalPlacement.Test", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapitalPlacement.Application", "src\CapitalPlacement.Application\CapitalPlacement.Application.csproj", "{2DABFEEC-650A-474B-BD25-E0CF291B1CBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapitalPlacement.Infrastructure", "src\CapitalPlacement.Infrastructure\CapitalPlacement.Infrastructure.csproj", "{3962CEDC-FFA1-4AB2-AC01-F3C8BBE85DFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2DABFEEC-650A-474B-BD25-E0CF291B1CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DABFEEC-650A-474B-BD25-E0CF291B1CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DABFEEC-650A-474B-BD25-E0CF291B1CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3962CEDC-FFA1-4AB2-AC01-F3C8BBE85DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3962CEDC-FFA1-4AB2-AC01-F3C8BBE85DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3962CEDC-FFA1-4AB2-AC01-F3C8BBE85DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3962CEDC-FFA1-4AB2-AC01-F3C8BBE85DFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
