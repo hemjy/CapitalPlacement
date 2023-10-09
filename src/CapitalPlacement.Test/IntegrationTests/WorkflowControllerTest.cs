@@ -33,6 +33,20 @@ namespace CapitalPlacement.Test.IntegrationTests
 
         }
 
+        [Fact]
+        public async Task Update_ReturnsBadRequestResult_WhenInValidDataIsProvided()
+        {
+
+            var validModel = DummyDataGenerator.GenerateInvalidFakeWorkflow();
+            var ob = JsonConvert.SerializeObject(validModel);
+            var jsonContent = new StringContent(ob, Encoding.UTF8, "application/json"); ;
+
+            var response = await _client.PutAsync($"/api/Workflow/{_programId}", jsonContent);
+
+            // Assert: Check the response
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+
+        }
 
         [Fact]
         public async Task Get_Should_Return_OkResult()
